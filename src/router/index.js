@@ -6,6 +6,7 @@ import Server from '@/views/Server'
 import Landing from '@/views/Landing'
 import Welcome from '@/views/Welcome'
 import Factories from '@/views/Factories'
+import Matches from '@/views/Matches'
 
 Vue.use(VueRouter)
 
@@ -43,6 +44,13 @@ const routes = [
     component: Factories,
 
     meta: { factories: true }
+  },
+  {
+    path: '/matches',
+    name: 'Matches',
+    component: Matches,
+
+    meta: { matches: true }
   }
 ]
 

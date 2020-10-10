@@ -4,6 +4,9 @@ module.exports = {
     extend: {
       transitionDuration: {
         '2000': '2000ms'
+      },
+      inset: {
+        '100': '100%'
       }
     }
   },

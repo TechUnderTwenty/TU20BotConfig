@@ -33,7 +33,7 @@
         <div class="ml-auto">
           <button
             v-if="expanded === index"
-            class="text-red-700 hover:text-red-600 hover:underline mr-2"
+            class="text-red-700 hover:text-red-600 hover:underline mr-4"
             @click="remove(factory)"
           >
             Remove
@@ -56,7 +56,7 @@
         </div>
       </div>
 
-      <div v-if="expanded === index" class="mt-2 text-sm">
+      <div v-if="expanded === index" class="mt-2 text-sm px-4">
         <div class="flex items-center mb-2">
           <label for="name" class="mr-2 font-medium">
             Sub Channel Name:

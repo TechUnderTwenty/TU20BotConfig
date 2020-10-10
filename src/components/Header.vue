@@ -51,6 +51,15 @@
         <LightningBolt class="w-4 h-4 mr-2" />
         Factories
       </router-link>
+      <router-link
+        tag="a"
+        to="/matches"
+        class="flex items-center font-light p-2"
+        :class="{ 'border-b-2 border-black font-bold': matches }"
+      >
+        <Collection class="w-4 h-4 mr-2" />
+        Matches
+      </router-link>
       <button
         class="flex items-center font-light p-2 bg-blue-100 rounded-t px-2 ml-4"
         @click="commit"
@@ -66,11 +75,12 @@
 
 <script>
 // Icons
-import LockClosed from 'heroicons/outline/lock-closed.svg'
 import Hand from 'heroicons/outline/hand.svg'
 import Globe from 'heroicons/outline/globe.svg'
 import LightningBolt from 'heroicons/outline/lightning-bolt.svg'
 import ClipboardList from 'heroicons/outline/clipboard-list.svg'
+import Collection from 'heroicons/outline/collection.svg'
+import LockClosed from 'heroicons/outline/lock-closed.svg'
 
 // Components
 import Flash from '@/components/Flash'
@@ -81,7 +91,16 @@ import axios from 'axios'
 export default {
   name: 'Header',
 
-  components: { LockClosed, Hand, Globe, LightningBolt, ClipboardList, Flash },
+  components: {
+    Hand,
+    Globe,
+    LightningBolt,
+    ClipboardList,
+    Collection,
+    LockClosed,
+
+    Flash
+  },
 
   computed: {
     server() {
@@ -98,6 +117,10 @@ export default {
 
     factories() {
       return this.$route.meta.factories
+    },
+
+    matches() {
+      return this.$route.meta.matches
     }
   },
 
