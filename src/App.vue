@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <Header />
+    <Header v-if="showHeader" />
 
     <router-view />
   </div>
@@ -12,7 +12,13 @@ import Header from '@/components/Header'
 export default {
   name: 'App',
 
-  components: { Header }
+  components: { Header },
+
+  computed: {
+    showHeader() {
+      return !this.$route.meta.hideHeader
+    }
+  }
 }
 </script>
 
