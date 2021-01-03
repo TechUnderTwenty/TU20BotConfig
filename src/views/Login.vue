@@ -1,5 +1,5 @@
 <template>
-  <div class="max-w-lg mx-auto p-4">
+  <div class="max-w-lg mx-auto p-4 shadow-lg mt-6 bg-gray-50">
     <form @submit.prevent="login" class="p-8 border rounded">
       <div class="flex items-center text-2xl justify-center mb-4">
         <img
@@ -11,9 +11,9 @@
       </div>
 
       <div>
-        <div class="font-light text-gray-500 text-xs mb-2">
-          Token
-        </div>
+        <small class="font-light text-gray-500 text-xs mb-2">
+          Password
+        </small>
         <input
           type="text"
           class="border rounded p-2 text-lg w-full bg-gray-100 font-mono"
@@ -67,16 +67,16 @@ export default {
       this.error = null
 
       try {
-        const result = await axios.get('/api/ping', {
-          headers: { Authorization: `Bearer ${this.token}` }
-        })
+        const result = await axios.post('/admin/login?password=' + this.token)
 
-        if (result.data === 'Pong') {
-          localStorage.setItem('auth:token', this.token)
+        if (result.data != null) {
+          localStorage.setItem('auth:token', result.data)
 
+          // Navigate to home
           window.location = '/'
         } else {
-          this.error = result.data
+          if (result.data == null) this.error = 'Invalid password'
+          else this.error = result.data
         }
       } catch (e) {
         console.log(e.response.data)
