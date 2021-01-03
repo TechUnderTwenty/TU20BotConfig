@@ -67,6 +67,12 @@
         <LockClosed class="w-4 h-4 mr-2" />
         Commit
       </button>
+      <button
+        class="flex items-center font-light p-2 bg-blue-100 rounded-t px-2 ml-4"
+        @click="logout"
+      >
+        Logout
+      </button>
     </div>
 
     <Flash ref="commit">All settings committed.</Flash>
@@ -127,8 +133,11 @@ export default {
   methods: {
     async commit() {
       await axios.put('/api/commit')
-
       this.$refs.commit.show()
+    },
+    async logout() {
+      localStorage.removeItem('auth:token')
+      window.location.href = '/'
     }
   }
 }
