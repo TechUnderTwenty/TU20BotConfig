@@ -67,7 +67,9 @@ export default {
       this.error = null
 
       try {
-        const result = await axios.post('/admin/login?password=' + this.token)
+        const result = await axios.post('/admin/login`, '', {
+          params: { password: this.token }
+        })
 
         if (result.data != null) {
           localStorage.setItem('auth:token', result.data)
