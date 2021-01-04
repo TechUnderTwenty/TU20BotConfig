@@ -71,6 +71,7 @@
         class="flex items-center font-light p-2 bg-blue-100 rounded-t px-2 ml-4"
         @click="logout"
       >
+        <Logout class="w-4 h-4 mr-2" />
         Logout
       </button>
     </div>
@@ -87,6 +88,7 @@ import LightningBolt from 'heroicons/outline/lightning-bolt.svg'
 import ClipboardList from 'heroicons/outline/clipboard-list.svg'
 import Collection from 'heroicons/outline/collection.svg'
 import LockClosed from 'heroicons/outline/lock-closed.svg'
+import Logout from 'heroicons/outline/logout.svg'
 
 // Components
 import Flash from '@/components/Flash'
@@ -104,6 +106,7 @@ export default {
     ClipboardList,
     Collection,
     LockClosed,
+    Logout,
 
     Flash
   },

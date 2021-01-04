@@ -67,7 +67,7 @@ export default {
       this.error = null
 
       try {
-        const result = await axios.post('/admin/login`, '', {
+        const result = await axios.post('/admin/login', '', {
           params: { password: this.token }
         })
 
