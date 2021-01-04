@@ -24,9 +24,6 @@ module.exports = {
         pathRewrite: {
           '^/api': '/'
         }
-      },
-      '^/admin': {
-        target: 'http://127.0.0.1:3000'
       }
     }
   }
