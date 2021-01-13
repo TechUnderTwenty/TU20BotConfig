@@ -74,25 +74,29 @@ export default {
     async login() {
       this.error = null
 
-      try {
-        const result = await axios.post('/api/admin/login', '', {
-          params: { password: this.token }
+      axios
+        .post('/api/admin/login', '', {
+          params: { username: this.username, password: this.password }
         })
-
-        if (result.data != null) {
+        .then(result => {
           localStorage.setItem('auth:token', result.data)
-
           // Navigate to home
           window.location = '/'
-        } else {
-          if (result.data == null) this.error = 'Invalid password'
-          else this.error = result.data
-        }
-      } catch (e) {
-        console.log(e.response.data)
+        })
+        .catch(error => {
+          if (error.response) {
+            // If the response was Unauthorised
+            if (error.response.status == 401) {
+              this.error = 'Invalid username or password'
+            } else {
+              this.error = `${error.response.data} (Invalid Token)`
+            }
 
-        this.error = `${e.response.data} (Invalid Token)`
-      }
+            console.log(error.response.data)
+          } else if (error.request) {
+            this.error = `${error.request}`
+          }
+        })
     }
   }
 }
