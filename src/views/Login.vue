@@ -1,5 +1,5 @@
 <template>
-  <div class="max-w-lg mx-auto p-4 shadow-lg mt-6 bg-gray-50">
+  <div class="max-w-lg mx-auto p-4 shadow-lg mt-6">
     <form @submit.prevent="login" class="p-8 border rounded">
       <div class="flex items-center text-2xl justify-center mb-4">
         <img
@@ -11,20 +11,27 @@
       </div>
 
       <div>
-        <small class="font-light text-gray-500 text-xs mb-2">
-          Password
-        </small>
+        <small class="font-light text-gray-500 text-xs mb-2"> Username </small>
         <input
           type="text"
           class="border rounded p-2 text-lg w-full bg-gray-100 font-mono"
-          v-model="token"
+          v-model="username"
+          required
+        />
+        <small class="font-light text-gray-500 text-xs mb-2 mt-4">
+          Password
+        </small>
+        <input
+          type="password"
+          class="border rounded p-2 text-lg w-full bg-gray-100 font-mono"
+          v-model="password"
           required
         />
       </div>
 
       <div
         class="font-light text-red-500 text-xs mt-2"
-        :class="{ 'opacity-0': !error }"
+        :class="{ 'opacity-0 hidden': !error }"
       >
         Failed to log in. {{ error }}
       </div>
@@ -56,7 +63,8 @@ export default {
 
   data() {
     return {
-      token: '',
+      username: '',
+      password: '',
 
       error: null
     }
