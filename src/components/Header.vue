@@ -138,7 +138,7 @@ export default {
       await axios.put('/api/commit')
       this.$refs.commit.show()
     },
-    async logout() {
+    logout() {
       localStorage.removeItem('auth:token')
       window.location.href = '/'
     }

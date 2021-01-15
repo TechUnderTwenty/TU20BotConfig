@@ -74,7 +74,7 @@ router.beforeEach((to, from, next) => {
   if (!to.meta.noAuth) {
     const token = localStorage.getItem('auth:token')
     if (token) {
-      var data = JSON.parse(atob(token.split('.')[1]))
+      const data = JSON.parse(atob(token.split('.')[1]))
       // If the token is expired, remove the token and navigate back to login
       if (new Date(data.validUntil) > new Date()){
         axios.defaults.headers['Authorization'] = `Bearer ${token}`

@@ -18,7 +18,7 @@
           v-model="username"
           required
         />
-        <small class="font-light text-gray-500 text-xs mb-2 mt-4">
+        <small class="font-light text-gray-500 text-xs mb-2 mt-8">
           Password
         </small>
         <input
@@ -86,13 +86,13 @@ export default {
         .catch(error => {
           if (error.response) {
             // If the response was Unauthorised
-            if (error.response.status == 401) {
+            if (error.response.status === 401) {
               this.error = 'Invalid username or password'
             } else {
               this.error = `${error.response.data} (Invalid Token)`
             }
 
-            console.log(error.response.data)
+            console.error(error.response.data)
           } else if (error.request) {
             this.error = `${error.request}`
           }
