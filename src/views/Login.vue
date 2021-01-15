@@ -71,7 +71,7 @@ export default {
   },
 
   methods: {
-    async login() {
+    login() {
       this.error = null
 
       axios
